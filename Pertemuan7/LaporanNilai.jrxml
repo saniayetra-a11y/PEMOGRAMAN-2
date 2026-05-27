@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport
+    xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+        http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="LaporanNilai"
+    pageWidth="595"
+    pageHeight="842"
+    columnWidth="535"
+    leftMargin="30"
+    rightMargin="30"
+    topMargin="20"
+    bottomMargin="20">
+
+    <queryString language="SQL">
+        <![CDATA[SELECT nim, nama, mata_kuliah, nilai1, nilai2, rata_rata FROM nilai_mahasiswa ORDER BY nim]]>
+    </queryString>
+
+    <field name="nim"         class="java.lang.String"/>
+    <field name="nama"        class="java.lang.String"/>
+    <field name="mata_kuliah" class="java.lang.String"/>
+    <field name="nilai1"      class="java.lang.Double"/>
+    <field name="nilai2"      class="java.lang.Double"/>
+    <field name="rata_rata"   class="java.lang.Double"/>
+
+    <variable name="totalData" class="java.lang.Integer" calculation="Count">
+        <variableExpression><![CDATA[$F{nim}]]></variableExpression>
+    </variable>
+
+    <title>
+        <band height="50">
+            <staticText>
+                <reportElement x="0" y="10" width="535" height="30"/>
+                <textElement textAlignment="Center">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[LAPORAN NILAI MAHASISWA]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <pageHeader>
+        <band height="0"/>
+    </pageHeader>
+
+    <columnHeader>
+        <band height="25">
+            <staticText>
+                <reportElement x="0"   y="5" width="70"  height="16"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[NIM]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="75"  y="5" width="130" height="16"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[NAMA]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="210" y="5" width="130" height="16"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[MATA KULIAH]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="345" y="5" width="60"  height="16"/>
+                <textElement textAlignment="Center"><font isBold="true"/></textElement>
+                <text><![CDATA[NILAI 1]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="410" y="5" width="60"  height="16"/>
+                <textElement textAlignment="Center"><font isBold="true"/></textElement>
+                <text><![CDATA[NILAI 2]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="475" y="5" width="60"  height="16"/>
+                <textElement textAlignment="Center"><font isBold="true"/></textElement>
+                <text><![CDATA[RATA2]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="0"   y="3" width="70"  height="14"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String"><![CDATA[$F{nim}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="75"  y="3" width="130" height="14"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String"><![CDATA[$F{nama}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="210" y="3" width="130" height="14"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String"><![CDATA[$F{mata_kuliah}]]></textFieldExpression>
+            </textField>
+            <textField pattern="0.0">
+                <reportElement x="345" y="3" width="60"  height="14"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression class="java.lang.Double"><![CDATA[$F{nilai1}]]></textFieldExpression>
+            </textField>
+            <textField pattern="0.0">
+                <reportElement x="410" y="3" width="60"  height="14"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression class="java.lang.Double"><![CDATA[$F{nilai2}]]></textFieldExpression>
+            </textField>
+            <textField pattern="0.0">
+                <reportElement x="475" y="3" width="60"  height="14"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression class="java.lang.Double"><![CDATA[$F{rata_rata}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <columnFooter>
+        <band height="0"/>
+    </columnFooter>
+
+    <pageFooter>
+        <band height="18">
+            <staticText>
+                <reportElement x="0" y="2" width="300" height="14"/>
+                <textElement><font size="9"/></textElement>
+                <text><![CDATA[Pemrograman 2 - Laporan Nilai Mahasiswa]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="435" y="2" width="100" height="14"/>
+                <textElement textAlignment="Right"><font size="9"/></textElement>
+                <textFieldExpression class="java.lang.String"><![CDATA["Halaman " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+
+    <summary>
+        <band height="30">
+            <staticText>
+                <reportElement x="0" y="8" width="130" height="16"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[Total Mahasiswa :]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="135" y="8" width="50" height="16"/>
+                <textElement><font isBold="true"/></textElement>
+                <textFieldExpression class="java.lang.Integer"><![CDATA[$V{totalData}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+
+</jasperReport>
