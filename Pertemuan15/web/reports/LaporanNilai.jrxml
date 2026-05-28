@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+        http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="LaporanNilai"
+    pageWidth="842" pageHeight="595"
+    orientation="Landscape"
+    columnWidth="782"
+    leftMargin="30" rightMargin="30"
+    topMargin="20" bottomMargin="20"
+    uuid="c1d2e3f4-1515-1515-1515-c1d2e3f4a5b6">
+
+    <queryString>
+        <![CDATA[SELECT n.nim, m.nama, n.kode_matakuliah, mk.nama_matakuliah,
+                 n.nilai_uts, n.nilai_uas, n.nilai_tugas, n.nilai_akhir, n.grade
+                 FROM tbnilai n
+                 JOIN tbmahasiswa m ON n.nim = m.nim
+                 JOIN tbmatakuliah mk ON n.kode_matakuliah = mk.kode_matakuliah
+                 ORDER BY n.nim]]>
+    </queryString>
+
+    <field name="nim"             class="java.lang.String"/>
+    <field name="nama"            class="java.lang.String"/>
+    <field name="kode_matakuliah" class="java.lang.String"/>
+    <field name="nama_matakuliah" class="java.lang.String"/>
+    <field name="nilai_uts"       class="java.lang.Double"/>
+    <field name="nilai_uas"       class="java.lang.Double"/>
+    <field name="nilai_tugas"     class="java.lang.Double"/>
+    <field name="nilai_akhir"     class="java.lang.Double"/>
+    <field name="grade"           class="java.lang.String"/>
+
+    <variable name="totalData" class="java.lang.Integer" calculation="Count">
+        <variableExpression><![CDATA[$F{nim}]]></variableExpression>
+    </variable>
+
+    <title>
+        <band height="60" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="5" width="782" height="25"
+                    uuid="t001"/>
+                <textElement textAlignment="Center">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[LAPORAN NILAI MAHASISWA]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="32" width="782" height="16"
+                    uuid="t002"/>
+                <textElement textAlignment="Center">
+                    <font size="11"/>
+                </textElement>
+                <text><![CDATA[UNIVERSITAS PAMULANG]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="25" splitType="Stretch">
+            <staticText>
+                <reportElement x="0"   y="5" width="80"  height="16" uuid="ch01"/>
+                <textElement><font isBold="true" size="10"/></textElement>
+                <text><![CDATA[NIM]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="85"  y="5" width="140" height="16" uuid="ch02"/>
+                <textElement><font isBold="true" size="10"/></textElement>
+                <text><![CDATA[NAMA]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="230" y="5" width="180" height="16" uuid="ch03"/>
+                <textElement><font isBold="true" size="10"/></textElement>
+                <text><![CDATA[MATA KULIAH]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="415" y="5" width="60"  height="16" uuid="ch04"/>
+                <textElement textAlignment="Center"><font isBold="true" size="10"/></textElement>
+                <text><![CDATA[UTS]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="480" y="5" width="60"  height="16" uuid="ch05"/>
+                <textElement textAlignment="Center"><font isBold="true" size="10"/></textElement>
+                <text><![CDATA[UAS]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="545" y="5" width="60"  height="16" uuid="ch06"/>
+                <textElement textAlignment="Center"><font isBold="true" size="10"/></textElement>
+                <text><![CDATA[TUGAS]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="610" y="5" width="80"  height="16" uuid="ch07"/>
+                <textElement textAlignment="Center"><font isBold="true" size="10"/></textElement>
+                <text><![CDATA[NILAI AKHIR]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="695" y="5" width="60"  height="16" uuid="ch08"/>
+                <textElement textAlignment="Center"><font isBold="true" size="10"/></textElement>
+                <text><![CDATA[GRADE]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement x="0"   y="3" width="80"  height="14" uuid="d01"/>
+                <textElement><font size="10"/></textElement>
+                <textFieldExpression><![CDATA[$F{nim}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="85"  y="3" width="140" height="14" uuid="d02"/>
+                <textElement><font size="10"/></textElement>
+                <textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="230" y="3" width="180" height="14" uuid="d03"/>
+                <textElement><font size="10"/></textElement>
+                <textFieldExpression><![CDATA[$F{nama_matakuliah}]]></textFieldExpression>
+            </textField>
+            <textField pattern="0.0">
+                <reportElement x="415" y="3" width="60"  height="14" uuid="d04"/>
+                <textElement textAlignment="Center"><font size="10"/></textElement>
+                <textFieldExpression><![CDATA[$F{nilai_uts}]]></textFieldExpression>
+            </textField>
+            <textField pattern="0.0">
+                <reportElement x="480" y="3" width="60"  height="14" uuid="d05"/>
+                <textElement textAlignment="Center"><font size="10"/></textElement>
+                <textFieldExpression><![CDATA[$F{nilai_uas}]]></textFieldExpression>
+            </textField>
+            <textField pattern="0.0">
+                <reportElement x="545" y="3" width="60"  height="14" uuid="d06"/>
+                <textElement textAlignment="Center"><font size="10"/></textElement>
+                <textFieldExpression><![CDATA[$F{nilai_tugas}]]></textFieldExpression>
+            </textField>
+            <textField pattern="0.00">
+                <reportElement x="610" y="3" width="80"  height="14" uuid="d07"/>
+                <textElement textAlignment="Center"><font size="10" isBold="true"/></textElement>
+                <textFieldExpression><![CDATA[$F{nilai_akhir}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="695" y="3" width="60"  height="14" uuid="d08"/>
+                <textElement textAlignment="Center"><font size="10" isBold="true"/></textElement>
+                <textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <pageFooter>
+        <band height="18" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="2" width="400" height="14" uuid="pf01"/>
+                <textElement><font size="9"/></textElement>
+                <text><![CDATA[Pemrograman 2 - Pertemuan 15 - Universitas Pamulang]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="682" y="2" width="100" height="14" uuid="pf02"/>
+                <textElement textAlignment="Right"><font size="9"/></textElement>
+                <textFieldExpression><![CDATA["Halaman " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+
+    <summary>
+        <band height="25" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="5" width="120" height="16" uuid="s01"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[Total Mahasiswa :]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="125" y="5" width="50" height="16" uuid="s02"/>
+                <textElement><font isBold="true"/></textElement>
+                <textFieldExpression><![CDATA[$V{totalData}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+
+</jasperReport>
