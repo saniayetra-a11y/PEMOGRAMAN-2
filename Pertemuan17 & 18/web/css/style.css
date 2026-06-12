@@ -1,0 +1,202 @@
+/* ============================================
+   style.css - Aplikasi Rent Car
+   ============================================ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+}
+
+/* ── Navbar ─────────────────────────────────── */
+.navbar {
+    background: #1a472a;
+    color: white;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.navbar .brand {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    margin-right: 30px;
+}
+.navbar a {
+    color: #c8e6c9;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    font-size: 14px;
+}
+.navbar a:hover, .navbar a.aktif {
+    background: #2e7d32;
+    color: white;
+}
+
+/* ── Layout ──────────────────────────────────── */
+.container {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #1a472a;
+    border-bottom: 3px solid #2e7d32;
+    padding-bottom: 8px;
+}
+
+/* ── Tombol ──────────────────────────────────── */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.85; }
+.btn-hijau  { background: #2e7d32; color: white; }
+.btn-biru   { background: #1565c0; color: white; }
+.btn-kuning { background: #f57f17; color: white; }
+.btn-merah  { background: #c62828; color: white; }
+.btn-abu    { background: #546e7a; color: white; }
+.btn-sm     { padding: 5px 10px; font-size: 13px; }
+
+/* ── Tabel ──────────────────────────────────── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+table th {
+    background: #1a472a;
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+}
+table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+table tr:hover td { background: #f1f8f1; }
+table tr:nth-child(even) td { background: #fafafa; }
+table tr:nth-child(even):hover td { background: #f1f8f1; }
+
+/* ── Form ────────────────────────────────────── */
+.form-group { margin-bottom: 16px; }
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #444;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2e7d32;
+    outline: none;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* ── Badge status ────────────────────────────── */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.badge-tersedia  { background: #e8f5e9; color: #2e7d32; }
+.badge-disewa    { background: #fff3e0; color: #e65100; }
+.badge-perawatan { background: #fce4ec; color: #c62828; }
+.badge-aktif     { background: #fff3e0; color: #e65100; }
+.badge-selesai   { background: #e8f5e9; color: #2e7d32; }
+.badge-batal     { background: #eeeeee; color: #757575; }
+
+/* ── Alert pesan ─────────────────────────────── */
+.alert {
+    padding: 12px 16px;
+    border-radius: 5px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+.alert-sukses { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #2e7d32; }
+.alert-error  { background: #fce4ec; color: #c62828; border-left: 4px solid #c62828; }
+
+/* ── Ringkasan statistik ─────────────────────── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border-top: 4px solid #2e7d32;
+}
+.stat-card .angka {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a472a;
+}
+.stat-card .label {
+    font-size: 13px;
+    color: #757575;
+    margin-top: 4px;
+}
+
+/* ── Footer ──────────────────────────────────── */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    color: #757575;
+    margin-top: 30px;
+}
+
+/* ── Cetak ───────────────────────────────────── */
+@media print {
+    .navbar, .btn, .no-print { display: none !important; }
+    body { background: white; }
+    .card { box-shadow: none; }
+}
